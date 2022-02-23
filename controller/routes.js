@@ -83,13 +83,20 @@ router.post('/signup', (req, res) => {
   }
 });
 
-router.post('/login', (req, res, next) => {
+router.post(
+  '/login',
   passport.authenticate('local', {
     failureRedirect: '/login',
-    successRedirect: '/',
     failureFlash: true,
-  })(req, res, next);
-});
+  }),
+  (req, res, next) => {
+    if (req.user.isAdmin === true) {
+      return res.redirect('/admin');
+    } else if (req.user.isAdmin === false) {
+      return res.redirect('/');
+    }
+  }
+);
 
 router.get('/logout', (req, res) => {
   req.logout();
@@ -118,6 +125,27 @@ router.get('/profile', checkAuth, (req, res) => {
   res.render('profile', {
     username: req.user.username,
     verified: req.user.isVerified,
+  });
+});
+
+router.get('/admin', checkAuth, (req, res) => {
+  var mydata;
+  user.find({ isAdmin: false }, (err, data) => {
+    if (err) {
+      console.log(err);
+    }
+    if (data) {
+      mydata = data;
+    }
+    res.render('admin', { data: mydata });
+  });
+});
+
+router.post('/admin/delete', (req, res) => {
+  const id = req.body.id;
+
+  user.findByIdAndRemove({ _id: id }, (err, doc) => {
+    res.redirect('/admin');
   });
 });
 

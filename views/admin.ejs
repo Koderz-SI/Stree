@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://bootswatch.com/5/quartz/bootstrap.min.css">
+    <title>Document</title>
+</head>
+
+<body>
+     
+              <ul><li><a href="/logout">Logout</a></li></ul>
+    <div style="padding-left: 15em; padding-right: 15em; ">
+        <div>
+            <h3 style="text-align: center;">USER DETAILS</h3>
+            <table class="table table-hover" style="text-align: center;">
+                <thead>
+                    <tr>
+                        <th scope="col">User</th>
+                        <th scope="col">Remove User</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <tr>
+
+                        <% for(var user of data){ %>
+                            <th scope="row">
+                                <form action="/admin/delete" method="POST">
+                                    <%= user.username %>
+                            </th>
+                            <input type="hidden" name="id" value="<%= user._id %>">
+                            <td><button type="submit" class="btn btn-danger">Delete</button></td>
+                    </tr>
+                    </form>
+                    <% } %>
+                </tbody>
+            </table>
+        </div>
+        <!-- <table>
+            <caption>Users</caption>
+            <thead>
+                <tr>
+                    <th scope="col">Email</th>
+                    <th scope="col">Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td data-label="Account">
+                        <% for(var user of data){ %>
+                            <form action="/delete" method="POST">
+                                <h4>
+                                    <%= user.username %>
+                                </h4>
+                    </td>
+                    <input type="hidden" name="id" value="<%= user._id %>">
+                    <td>
+                        <button type="submit" className="btn btn-sm btn-danger" style="border: 0;
+                                background-color: rgb(194, 9, 9);
+                                color: white;
+                                height: 3em;
+                                border-radius: 4px;
+                                border-top: 1px solid rgba(0, 0, 0, 0.1);
+                                border-bottom: 1px solid rgba(243, 5, 5, 0.3);
+                                cursor : pointer">
+                            DELETE
+                        </button>
+                    </td>
+                    </form>
+                    <% } %>
+                </tr>
+            </tbody>
+        </table> -->
+    </div>
+</body>
+
+</html>
