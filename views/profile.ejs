@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Authentication</title>
+    <link rel="stylesheet" href="https://bootswatch.com/5/quartz/bootstrap.min.css">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/">Authentication</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor02"
+                aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarColor02">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="/">Home
+                            <span class="visually-hidden">(current)</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/logout">Logout</a>
+                    </li>
+                  
+
+                    
+                </ul>
+
+            </div>
+        </div>
+    </nav>
+    
+    <% if(typeof verified != 'undefined'){ %>
+    <% if(! verified ){ %>
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <strong> Error </strong>
+            Please verify your account. <a href='/user/send-verification-email'>Re send verification email</a>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        <% } %>
+        <% } %>
+
+        <% if(typeof emailsent != 'undefined'){ %>
+            <% if( emailsent ){ %>
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    <strong> Success </strong>
+                   verification email sent!
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+           <% } %>
+       <% } %>
+        
+       <% if(typeof err !='undefined' ){ %>
+        <% if(err){ %>
+          <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <strong>ERROR </strong>
+            <%= err %>.
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+          <% } %>
+            <% } %>
+        
+
+    <div class="card border-dark mb-8" style="max-width: 20rem; ">
+        <div class="card-header"><%= username %></div>
+        <div class="card-body">
+          <h4 class="card-title">Dark card title</h4>
+          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        </div>
+      </div>
+
+</body>
+
+</html>

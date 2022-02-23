@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Authentication</title>
+    <link rel="stylesheet" href="https://bootswatch.com/5/sandstone/bootstrap.min.css">
+</head>
+<!-- https://bootswatch.com/5/vapor/bootstrap.min.css -->
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/">Authentication</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor02"
+                aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarColor02">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link " href="/">Home
+
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/login">Login</a>
+                        
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="/signup">Signup</a>
+                        <span class="visually-hidden">(current)</span>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button"
+                            aria-haspopup="true" aria-expanded="false">Dropdown</a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="/login">Login</a>
+                            <a class="dropdown-item" href="/signup">Sign up</a>
+
+                        </div>
+                    </li>
+                </ul>
+
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <form action="/signup" method="POST">
+            <fieldset>
+                <br/>
+                <legend>Register Yourself</legend>
+                
+                <% if(typeof err !='undefined' ){ %>
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        <strong> Error </strong>
+                        <%= err %>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                    <% } %>
+
+                <div class="form-group">
+                    <label for="username" class="form-label mt-4">Enter your Email address</label>
+                    <input type="email" class="form-control" id="username" aria-describedby="emailHelp"
+                        placeholder="Enter email" name = "email">
+                    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone
+                        else.</small>
+                </div>
+
+                <div class="form-group">
+                    <label for="username" class="form-label mt-4">username</label>
+                    <input type="text" class="form-control" id="username" aria-describedby="emailHelp"
+                        placeholder="Enter email" name = "username">
+                </div>
+                
+                <div class="form-group">
+                    <label for="password" class="form-label mt-4">Password</label>
+                    <input type="password" name = "password" class="form-control" id="password" placeholder="Password">
+                </div>
+
+                <div class="form-group">
+                    <label for="password" class="form-label mt-4">Confirm Password</label>
+                    <input type="password" class="form-control" id="password" name="confirmpassword" placeholder="Password">
+                </div>
+                
+               <div><br/>
+                <input type="submit" class="btn btn-lg btn-outline-primary" value="Register">
+                <a href="/google"><button type="button" class="btn btn-secondary">Continue with google</button></a>
+                <br/><br/>
+                <p>Already Registered?<a href="/login"><button type="button" class="btn btn-success">Login</button></a></p>
+               </div>
+            </fieldset>
+        </form>
+    </div>
+
+</body>
+
+</html>
