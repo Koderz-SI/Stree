@@ -1,0 +1,67 @@
+<div class="container">
+        <form action="/login" , method="POST">
+            <fieldset>
+                <br/>
+                <legend>Login Here</legend>
+                
+                <% if( error !="" ){ %>
+                    <div
+                      class="alert alert-danger alert-dismissible fade show"
+                      role="alert"
+                    >
+                      <strong> Error </strong>
+                      <%= error %>.
+                      <button
+                        type="button"
+                        class="btn-close"
+                        data-bs-dismiss="alert"
+                        aria-label="Close"
+                      ></button>
+                    </div>
+                    <% } %>
+            
+                    <!-- if someone tried to access a protected route  -->
+                    <!-- this flash message will show them to login first  -->
+            
+                    <% if( error_messages !="" ){ %>
+                      <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                          <strong> Error </strong>
+                          <%= error_messages %>.
+                              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                      </div>
+                      <% } %>
+
+                <div class="form-group">
+                    <label for="username" class="form-label mt-4">Email address</label>
+                    <input  type="email"
+                    class="form-control"
+                    name="email"
+                    id="username"
+                    
+                    placeholder="Email">
+                    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone
+                        else.</small>
+                </div>
+                <div class="form-group">
+                    <label for="password" class="form-label mt-4">Password</label>
+                    <input  type="password"
+                    class="form-control "
+                    name="password"
+                    id="password"
+                    autocomplete="off"
+                    placeholder="Password">
+                </div>
+               
+               <div><br/>
+                <input
+                type="submit"
+                class="btn btn-lg btn-block btn-outline-primary"
+                value="Login"
+                />
+              <a href="/google"><button type="button" class="btn btn-secondary">Continue with google</button></a>
+                <br/><br/>
+                <p>New Here? <a href="/signup"><button type="button" class="btn btn-success">SignUp</button></a></p>
+               </div>
+            </fieldset>
+        </form>
+    </div>

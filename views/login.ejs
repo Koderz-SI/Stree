@@ -1,122 +1,185 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Authentication</title>
-    <link rel="stylesheet" href="https://bootswatch.com/5/sandstone/bootstrap.min.css">
-</head>
-<!-- https://bootswatch.com/5/vapor/bootstrap.min.css -->
-<body>
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="assets/css/style.css" />
+  </head>
+  <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="/">Authentication</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor02"
-                aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+      <div class="container-fluid">
+        <a class="navbar-brand" href="/">Authentication</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarColor02"
+          aria-controls="navbarColor02"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
 
-            <div class="collapse navbar-collapse" id="navbarColor02">
-                <ul class="navbar-nav me-auto">
-                    <li class="nav-item">
-                        <a class="nav-link " href="/">Home
+        <div class="collapse navbar-collapse" id="navbarColor02">
+          <ul class="navbar-nav me-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="/">Home </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="/login">Login</a>
+              <span class="visually-hidden">(current)</span>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/signup">Signup</a>
+            </li>
 
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" href="/login">Login</a>
-                        <span class="visually-hidden">(current)</span>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/signup">Signup</a>
-                    </li>
-
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button"
-                            aria-haspopup="true" aria-expanded="false">Dropdown</a>
-                        <div class="dropdown-menu">
-                            <a class="dropdown-item" href="/login">Login</a>
-                            <a class="dropdown-item" href="/signup">Sign up</a>
-
-                        </div>
-                    </li>
-                </ul>
-
-            </div>
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                data-bs-toggle="dropdown"
+                href="#"
+                role="button"
+                aria-haspopup="true"
+                aria-expanded="false"
+                >Dropdown</a
+              >
+              <div class="dropdown-menu">
+                <a class="dropdown-item" href="/login">Login</a>
+                <a class="dropdown-item" href="/signup">Sign up</a>
+              </div>
+            </li>
+          </ul>
         </div>
+      </div>
     </nav>
 
-    <div class="container">
-        <form action="/login" , method="POST">
-            <fieldset>
-                <br/>
-                <legend>Login Here</legend>
-                
-                <% if( error !="" ){ %>
-                    <div
-                      class="alert alert-danger alert-dismissible fade show"
-                      role="alert"
-                    >
-                      <strong> Error </strong>
-                      <%= error %>.
-                      <button
-                        type="button"
-                        class="btn-close"
-                        data-bs-dismiss="alert"
-                        aria-label="Close"
-                      ></button>
+    <section>
+      <div id="contact-section" class="pad-sec col-lg-10">
+        <div class="container">
+          <div
+            class="title-section text-center animated out"
+            data-animation="fadeInUp"
+            data-delay="0"
+          >
+            <div class="row">
+              <div class="col-sm-8 col-sm-offset-2">
+                <h2>Login</h2>
+                <hr />
+                <p>Login Now to start Exploring!</p>
+              </div>
+            </div>
+            <!-- End row -->
+          </div>
+          <!-- end title-section -->
+          <% if( error !="" ){ %>
+          <div
+            class="alert alert-danger alert-dismissible fade show"
+            role="alert"
+          >
+            <strong> Error </strong>
+            <%= error %>.
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="alert"
+              aria-label="Close"
+            ></button>
+          </div>
+          <% } %>
+
+          <!-- if someone tried to access a protected route  -->
+          <!-- this flash message will show them to login first  -->
+
+          <% if( error_messages !="" ){ %>
+          <div
+            class="alert alert-danger alert-dismissible fade show"
+            role="alert"
+          >
+            <strong> Error </strong>
+            <%= error_messages %>.
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="alert"
+              aria-label="Close"
+            ></button>
+          </div>
+          <% } %>
+          <div class="form-wrapper">
+            <div class="row">
+              <div class="col-md-8 col-md-offset-2">
+                <!-- form fields -->
+                <form
+                  action="/login"
+                  method="post"
+                  name="contactform"
+                  id="contactform"
+                  class="animated out"
+                  data-animation="fadeInUp"
+                  data-delay="0"
+                >
+                  <fieldset>
+                    <div class="form-group">
+                      <input
+                        class="form-control br-b"
+                        type="text"
+                        name="email"
+                        id="name"
+                        placeholder="Email"
+                      />
                     </div>
-                    <% } %>
-            
-                    <!-- if someone tried to access a protected route  -->
-                    <!-- this flash message will show them to login first  -->
-            
-                    <% if( error_messages !="" ){ %>
-                      <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                          <strong> Error </strong>
-                          <%= error_messages %>.
-                              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                      </div>
-                      <% } %>
 
-                <div class="form-group">
-                    <label for="username" class="form-label mt-4">Email address</label>
-                    <input  type="email"
-                    class="form-control"
-                    name="email"
-                    id="username"
-                    
-                    placeholder="Email">
-                    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone
-                        else.</small>
-                </div>
-                <div class="form-group">
-                    <label for="password" class="form-label mt-4">Password</label>
-                    <input  type="password"
-                    class="form-control "
-                    name="password"
-                    id="password"
-                    autocomplete="off"
-                    placeholder="Password">
-                </div>
-               
-               <div><br/>
-                <input
-                type="submit"
-                class="btn btn-lg btn-block btn-outline-primary"
-                value="Login"
-                />
-              <a href="/google"><button type="button" class="btn btn-secondary">Continue with google</button></a>
-                <br/><br/>
-                <p>New Here? <a href="/signup"><button type="button" class="btn btn-success">SignUp</button></a></p>
-               </div>
-            </fieldset>
-        </form>
-    </div>
+                    <div class="form-group">
+                      <input
+                        class="form-control br-b"
+                        type="password"
+                        name="password"
+                        id="email"
+                        placeholder="Password"
+                      />
+                    </div>
+                    <!-- submit button -->
+                    <div class="form-group">
+                      <input
+                        type="submit"
+                        name="submit"
+                        value="Login"
+                        id="submit"
+                        class="btn btn-sm btn-dark"
+                      />
+                    </div>
+                    <a href="/google"
+                      ><button type="button" class="btn btn-secondary">
+                        Continue with google
+                      </button></a
+                    >
+                    <br /><br />
+                    <p>
+                      New Here?
+                      <a href="/signup"
+                        ><button type="button" class="btn btn-success">
+                          SignUp
+                        </button></a
+                      >
+                    </p>
+                  </fieldset>
 
-</body>
-
+                  <div id="alert"></div>
+                </form>
+              </div>
+              <!-- end col-md-8 -->
+            </div>
+            <!-- end row -->
+          </div>
+          <!-- end form-wrapper -->
+        </div>
+        <!-- end container -->
+      </div>
+      <!-- End contact-section -->
+    </section>
+  </body>
 </html>
-
