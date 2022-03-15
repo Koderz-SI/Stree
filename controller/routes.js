@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const user = require('../model/user');
+
 const bcryptjs = require('bcryptjs');
 const passport = require('passport');
 require('./passportLocal')(passport);
@@ -148,5 +149,7 @@ router.post('/admin/delete', (req, res) => {
     res.redirect('/admin');
   });
 });
+
+router.use(require('./shopRoute'));
 
 module.exports = router;

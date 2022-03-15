@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Stree</title>
+  </head>
+  <body>
+    <form action="/donation" method="POST">
+      <label for="fname">Name:</label><br />
+      <input type="text" id="name" name="donor" value="John" /><br />
+      <label for="product">Product:</label><br />
+      <input
+        type="text"
+        id="product"
+        name="product"
+        value="Product"
+      /><br /><br />
+      <label for="desc">Description:</label><br />
+      <input type="text" id="desc" name="desc" value="Describe" /><br /><br />
+      <label for="Phone">Phone:</label><br />
+      <input
+        type="tel"
+        id="tel"
+        name="phone"
+        placeholder="0123456789"
+        pattern="[1-9]{1}[0-9]{9}"
+        required
+      /><br /><br />
+      <label for="Email Address">Email ID:</label><br />
+      <input
+        type="email"
+        id="email"
+        name="email"
+        placeholder="Email Id"
+      /><br /><br />
+
+      <label for="Address">Address:</label><br />
+      <input
+        type="text"
+        id="Address"
+        name="address"
+        placeholder="Address"
+      /><br /><br />
+
+      <input type="submit" value="Submit" />
+    </form>
+  </body>
+</html>

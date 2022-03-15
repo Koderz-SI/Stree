@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+   <body>
+    
+    <div class="card border-dark mb-8" style="max-width: 20rem">
+      
+     <div class="row multi-columns-row">
+
+
+                <!-- === Blog item 1 === -->
+                <% for( let i=0; i < data.length; i++ ) { %>
+                    <div class="col-sm-6 m-bottom-40">
+                        <div class="blog wow zoomIn" data-wow-duration="1s" data-wow-delay="0.7s">
+                           
+                            <div >
+                                <h5>
+                                    <%= data[i].product %>
+                                </h5>
+                            </div>
+                            <!--post info-->
+                            <div class="blog-post-body">
+                                <h4><a class="title">
+                                      Product rate  <%= data[i].rate %>
+                                    </a></h4>
+                                <p class="p-bottom-5">Product Desc: <%= data[i].desc %>
+                                </p>
+                               
+                              <button><a href="">Buy</button>
+                            </div>
+                                <% } %>
+    </div>
+  </body>
+</html>
